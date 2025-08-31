@@ -1,0 +1,194 @@
+.arena {
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.arenaContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team {
+    select {
+        width: 200px;
+        border-radius: 30px;
+        border: 1px solid gray;
+        padding: 12px 30px;
+        font-size: 20px;
+        color: black;
+    }
+    option {
+        margin-top: 30px;
+        border-radius: 12px;
+        opacity: 0.8;
+        color: black;
+        border-bottom: 2px solid yellow;
+    }
+}
+
+.teamPockemon {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    h2 {
+        font-size: 30px;
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-left: 40px;
+    }
+}
+
+.opponent {
+    select {
+        width: 200px;
+        border-radius: 30px;
+        border: 1px solid gray;
+        padding: 12px 30px;
+        font-size: 20px;
+        color: black;
+    }
+    option {
+        margin-top: 30px;
+        height: 200px;
+        border-radius: 12px;
+        opacity: 0.8;
+        color: black;
+        border-bottom: 2px solid yellow;
+    }
+}
+
+.opponentPockemon {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    h2 {
+        font-size: 30px;
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+    }
+}
+
+.battleBtn {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Courier New", Courier, monospace;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    &:hover {
+        background-color: #ffcb05;
+        transform: translateY(2px) scale(0.98);
+    }
+}
+
+.types {
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 500;
+    border: 1px solid gray;
+    border-radius: 20px;
+    width: 100px;
+    height: 50px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.pokemonFightsTeam {
+    animation: enterLeft 1s ease-out forwards, idleMove 1s infinite alternate, fightTeam 2s infinite 1s;
+}
+
+
+/* Вылет справа (противник) */
+
+.pokemonFightsOpponent {
+    animation: enterRight 1s ease-out forwards, idleMove 1s infinite alternate, fightOpponent 2s infinite 1s;
+}
+
+
+/* Вылет на арену */
+
+@keyframes enterLeft {
+    from {
+        transform: translateX(-400px) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes enterRight {
+    from {
+        transform: translateX(400px) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* Легкое покачивание */
+
+@keyframes idleMove {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* Атака игрока */
+
+@keyframes fightTeam {
+    0%,
+    50%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(30px) rotate(10deg);
+    }
+    40% {
+        transform: translateX(-100px) rotate(-10deg);
+    }
+    75% {
+        transform: translateX(910px) rotate(-5deg);
+    }
+}
+
+
+/* Атака противника */
+
+@keyframes fightOpponent {
+    0%,
+    50%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-30px) rotate(-10deg);
+    }
+    40% {
+        transform: translateX(-800px) rotate(-10deg);
+    }
+    75% {
+        transform: translateX(200px) rotate(35deg);
+    }
+}

@@ -1,0 +1,42 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 4px 12px #ccc;
+    width: 280px;
+    height: 200px;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+        background-color: #424141;
+        span {
+            opacity: 0.8;
+        }
+    }
+    h3 {
+        font-family: "Courier New", Courier, monospace;
+        color: #ccc;
+        font-size: 23px;
+        transform: color 0.3s;
+    }
+    span {
+        font-family: "Courier New", Courier, monospace;
+        transition: 0.2s;
+        border-bottom: 1px solid transparent;
+        opacity: 0;
+        &:hover {
+            opacity: 0.8;
+            color: #adadad;
+            border-bottom: 1px solid #ccc;
+        }
+    }
+}
+
+.link {
+    color: #ccc;
+    text-decoration: none;
+}

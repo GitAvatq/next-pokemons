@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: light;
+}
+
+button {
+    border: none;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.center {
+    animation: rolling 1s infinite linear;
+    img {
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+@keyframes rolling {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

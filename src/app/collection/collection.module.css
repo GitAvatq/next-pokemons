@@ -1,0 +1,33 @@
+.collectionWrapper {
+    position: relative;
+}
+
+.collection {
+    font-family: "Courier New", Courier, monospace;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 10px;
+    margin-left: 50px;
+}
+
+.center {
+    font-family: "Courier New", Courier, monospace;
+    img {
+        animation: rolling 1s infinite linear;
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 30px;
+    }
+}
+
+@keyframes rolling {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
