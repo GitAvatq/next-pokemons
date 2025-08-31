@@ -6,13 +6,14 @@ import Image from 'next/image';
 import vs from "@/public/vs-battle.webp";
 import bgPhone from "@/public/battle-bg-phone.jpg"
 import CatchModal from '@/src/shared/ui/CatchModal';
+import { Pokemon } from '@/src/shared/types/pokemon.interface';
 
 const page = () => {
     const [selectIndex, setSelectIndex] = useState<number>(0);
     const [selectedIndexSec, setSelectIndexSec] = useState<number>(1)
     const [changePositions, setChangePositions] = useState(false)
     const [isShowStartVs, setIsShowStartVs] = useState(false)
-    const [resultBattlePokemon, setResultBattlePokemon] = useState({})
+    const [resultBattlePokemon, setResultBattlePokemon] = useState<Pokemon>({})
     const [isBattleStart, setIsBattleStart] = useState(false)
     const [pokemonFights, setPokemonFights] = useState(false)
     const [isWinnerModal, setWinnerModal] = useState(false)
@@ -27,11 +28,11 @@ const page = () => {
         const audio = new Audio("/sounds/battle-poccess-sound-mk.mp3");
         audio.play()
     }
-    const hanldeSelectPokemonTeam = (e) => {
+    const hanldeSelectPokemonTeam = (e: any) => {
         const selected = e.target
         setSelectIndex(selected.selectedIndex)
     }
-    const hanldeSelectPokemonOpponent = (e) => {
+    const hanldeSelectPokemonOpponent = (e: any) => {
         const selected = e.target
         setSelectIndexSec(selected.selectedIndex)
     }
@@ -63,7 +64,7 @@ const page = () => {
     let opponentPokemon = collection[selectedIndexSec]
 
     function findOutWinner() {
-        let res = ourPokemon.stats?.reduce((acc, el, idx) => {
+        let res = ourPokemon.stats?.reduce((acc: any, el: any, idx: any) => {
             if (ourPokemon.stats[idx].base_stat > opponentPokemon.stats[idx].base_stat) {
                 acc.team++;
             } else {
@@ -82,7 +83,6 @@ const page = () => {
             setWinnerMessage(`${ourPokemon.name} is Won!`)
         } else if (res.team === res.opponent) {
             setWinnerMessage(`Draw!`)
-            setIsDrawModal(true)
         } else {
             setWinnerModal(true)
             setResultBattlePokemon(opponentPokemon)
@@ -95,8 +95,8 @@ const page = () => {
         <>
             {isWinnerModal ?
                 <CatchModal
-                    src={`${resultBattlePokemon.sprites?.front_default}`}
-                    title={resultBattlePokemon.name} alt={resultBattlePokemon.name}
+                    src={`${resultBattlePokemon?.sprites?.front_default}`}
+                    title={resultBattlePokemon?.name ?? ""} alt={resultBattlePokemon?.name ?? ""}
                     message={winnerMessage} closeModal={() => setWinnerModal(false)} />
                 : <div
                     style={{
@@ -128,7 +128,7 @@ const page = () => {
 
                                     {!isBattleStart &&
                                         <div style={{ display: 'flex', alignItems: 'center', gap: 30 }}>
-                                            {ourPokemon && ourPokemon.types?.map((t, idx) => (
+                                            {ourPokemon && ourPokemon.types?.map((t: any, idx: number) => (
                                                 <span
                                                     className={styles.types} key={idx}
                                                     style={{
@@ -172,7 +172,7 @@ const page = () => {
 
                                     {!isBattleStart &&
                                         <div style={{ display: 'flex', alignItems: 'center', gap: 30 }}>
-                                            {opponentPokemon && opponentPokemon?.types?.map((t, idx) => (
+                                            {opponentPokemon && opponentPokemon?.types?.map((t: any, idx: number) => (
                                                 <span
                                                     className={styles.types} key={idx + 1}
                                                     style={{

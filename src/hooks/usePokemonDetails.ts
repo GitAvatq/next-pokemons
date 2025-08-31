@@ -1,7 +1,7 @@
 import { useQueries, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export const usePokemonDetails = (name: string) => {
+export const usePokemonDetails = (name?: string) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["pokemon", name],
     queryFn: async () => {

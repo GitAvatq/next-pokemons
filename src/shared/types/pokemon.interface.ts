@@ -7,6 +7,13 @@ export interface IPokemon {
   types?: any;
 }
 
+export interface Pokemon {
+  sprites?: {
+    front_default?: string;
+  };
+  name?: string;
+}
+
 export interface IPokemonCollection {
   collection: IPokemon[];
   addPokemon: (pokemon: IPokemon) => void;

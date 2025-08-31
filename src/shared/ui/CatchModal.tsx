@@ -1,11 +1,11 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import React from 'react';
 import gotchaAfterModal from "@/public/gotcha-pokemon.png";
 import styles from "./CatchModal.module.css";
 import nextIcon from "@/public/nextIcon.png"
 
 interface IProps {
-    src: string,
+    src: string | StaticImageData,
     alt: string,
     title: string,
     message?: string

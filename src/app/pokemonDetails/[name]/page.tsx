@@ -11,12 +11,13 @@ import styles from "./pokemonDetails.module.css"
 import { usePokemonDetails } from '@/src/hooks/usePokemonDetails';
 import CatchModal from '@/src/shared/ui/CatchModal';
 import { MdEdit } from "react-icons/md";
-import ErrorMessage from '@/src/components/layout/header/ErrorMessage';
 import { usePokemonCollection } from '@/src/store/PokemonStoreCollection';
 
 
 const page = () => {
     const { name } = useParams()
+    console.log(typeof name);
+
     const router = useRouter()
     const [moveItemsLength, setMoveItemsLength] = useState(3);
     const [isCatchModal, setIsCatchModal] = useState(false);
@@ -25,7 +26,7 @@ const page = () => {
     const [isShowEditInpt, setIsShowEditInpt] = useState(false)
 
     const { collection, addPokemon, releasePokemon } = usePokemonCollection()
-    const { pokemonDetails, detailsLoading, detailsError } = usePokemonDetails(name)
+    const { pokemonDetails, detailsLoading } = usePokemonDetails(String(name))
     console.log(pokemonDetails);
 
     const removePokemonFromCollection = () => {
@@ -54,11 +55,6 @@ const page = () => {
         setIsCatchedPokemon(false)
     }
 
-    useEffect(() => {
-        if (detailsError) {
-            <ErrorMessage error={detailsError} />
-        }
-    }, [])
 
     let catchWord = "CATCH"
     let relaseWord = "RELEASE"

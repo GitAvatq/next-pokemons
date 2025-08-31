@@ -7,7 +7,7 @@ import { usePokemonCollection } from '@/src/store/PokemonStoreCollection';
 import releaseAfterModal from "@/public/released-img.png";
 import CatchModal from './CatchModal';
 
-const PokemonModel = ({ pokemon }) => {
+const PokemonModel = ({ pokemon }: any) => {
     const [isReleaseModal, setIsReleaseModal] = useState(false)
     const { releasePokemon } = usePokemonCollection()
 
